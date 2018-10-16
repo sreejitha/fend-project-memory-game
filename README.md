@@ -1,20 +1,25 @@
-# Memory Game Project
+## Memory Game Project
 
-## Table of Contents
+With this project an attempt to re-create the Memory Game for a single user play has been made. In this game, the user clicks on any of the unopened cards and tries to find its matching pair from the rest of the unopened cards, based on memory of the location of previously opened cards. If a matching pair is found, the 2 cards stay open, if not both of them are closed back. Once the game completes (that is all matching pairs of cards are found), game statistics are displayed namely 1>no of moves 2>no of stars 3>time taken
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Instructions to run the project
+Clone this repository into a folder and cd into that folder. In that folder you will find several other sub-folders such as "css" (houses the css file for the project), "img"(houses the images for the project) & "js"(houses the javascript file for the project) and an html file named "index.html". Open index.html using a browser application such as Google Chrome. The game will commence on this html file.
 
-## Instructions
+## About the solution
+Implemented several event listeners to meet game logic and for progressing the game based on user actions and milestones:-
+1> Start Timer: Fired when the user begins the game (body onload)
+2> Stop Timer: Fired when all cards are matched
+3> Checking for game end: Fired when user begins the game, and checks condition at interval of 1000ms
+4> Game restart: When the game restart img icon is clicked (Resets no of stars, no of moves and timer and shuffles cards)
+5> Play Again: Similar to Game restart, but this happens when the button of the Game Summary modal is clicked
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+Important functions in the game:-
+1> checkMatch(cardArray): checks whether the last 2 opened cards are a match (last 2 cards are stored in an array. These 2 cards are deleted from the array at the end of the check regardless of result)
+2>hideCard(cardArray): visually hides the cards passed in the card array. Called when the last 2 cards are not a match and on game reset and new game start.
+3>checkForGameEnd() This function is called at intervals of 1000ms to check whether user has finished playing the game. If true, it displays the Game Summary Modal.
+4>restartGame(): Several important things happen with this function
+  a> stars are reset back to 5 (max number of stars a user can earn in the game)
+  b> all cards are closed back
+  c> cards are shuffled
+  d> Moves set back to 0
+  e> Timer set back to 0.
