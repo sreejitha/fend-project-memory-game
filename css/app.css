@@ -20,6 +20,7 @@ body {
 }
 
 .container {
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,13 +67,14 @@ body {
 }
 
 .para1-gameover {
-   font-weight: bold;
-   font-size:larger;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .para2-gameover {
-   color: #808080;
+  color: #808080;
 }
+
 .gameStats span {
   display: table-cell;
   vertical-align: middle;
@@ -88,7 +90,9 @@ h1 {
  */
 
 .deck {
-  width: 60%;
+  z-index: 4;
+  width: 100%;
+  max-width: 600px;
   min-height: 680px;
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
@@ -98,18 +102,21 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 3em;
+  margin: auto;
 }
 
 .aside {
+  z-index: 3;
   display: inline-block;
-  height: 680px;
-  width: 20%;
+  height: 200px;
+  width: 100%;
+  max-width: 600px;
   background: #2e3d49;
   color: #ffffff;
   font-size: 40px;
   text-align: center;
   border-radius: 10px;
+  margin: auto;
 }
 
 .aside i {
@@ -134,14 +141,15 @@ h1 {
   height: 125px;
   width: 125px;
   background: #2e3d49;
-  margin-bottom: 30px;
+  margin-bottom: 3%;
   font-size: 0;
   color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  text-align: center;
   box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
   transition: 0.5s;
 }
@@ -152,6 +160,9 @@ h1 {
   cursor: default;
 }
 
+.fa{
+  margin:auto;
+}
 .deck .card.close {
   transform: rotateY(180deg);
   background: #2e3d49;
@@ -213,15 +224,17 @@ h1 {
 
 .score-panel {
   text-align: left;
-  width: 345px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
   margin-bottom: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .score-panel .stars {
-  margin: 0;
-  padding: 0;
   display: inline-block;
-  margin: 0 5px 0 0;
+  margin: auto;
 }
 
 .score-panel .stars li {
@@ -230,8 +243,11 @@ h1 {
 }
 
 .score-panel .restart {
-  float: right;
+  width: 30%;
+  margin: auto;
   cursor: pointer;
+  padding: 1.5em;
+  text-align: center;
 }
 
 p.timeElapsedLbl {
@@ -239,6 +255,57 @@ p.timeElapsedLbl {
   font-size: 30px;
 }
 
+.starsAndMoves {
+  width: 100%;
+  text-align: center;
+}
+
 p.timeElapsed {
   font-size: 20px;
+}
+
+/*Adjust card size between these screen widths so 2 cards can fit each line*/
+@media screen and (min-width: 320px) and (max-width: 472px) {
+  .deck .card {
+    width:70px;
+    height:70px;
+  }
+}
+
+/*Adjust card size between these screen widths so 2 cards can fit each line */
+@media screen and (min-width: 473px) and (max-width: 480px) {
+  .deck .card {
+    width:90px;
+    height:90px;
+  }
+}
+
+
+/*Adjust card spacing between these screen widths so cards are not sticking to
+ the edges of the screen */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .deck {
+    justify-content: center;
+  }
+  .deck .card {
+    margin: 3%;
+  }
+}
+
+/*Adjust card margins between these screen widths to avoid cards
+sticking together */
+@media screen and (min-width: 640px) and (max-width: 665px) {
+  .card{
+    margin:3%;
+  }
+  .deck {
+    justify-content: space-around;
+  }
+}
+
+/*Adjust deck size from this screen width and above to optimize on space */
+@media screen and (min-width: 640px) {
+  .main{
+    width:90%;
+  }
 }

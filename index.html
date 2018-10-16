@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>Matching Game</title>
-  <meta name="description" content="">
   <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
   <link rel="stylesheet" href="css/app.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -26,21 +26,26 @@
       <h1>Matching Game</h1>
     </header>
     <section class="score-panel">
-      <ul class="stars">
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-        <li><i class="fa fa-star"></i></li>
-      </ul>
-
-      <span class="moves">0</span> Moves
-
+      <div class="starsAndMoves">
+        <ul class="stars">
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+          <li><i class="fa fa-star"></i></li>
+        </ul>
+        <span class="moves">0</span> Moves
+      </div>
       <div class="restart">
         <i class="fa fa-repeat"></i>
       </div>
     </section>
     <section class="main">
+      <section class="aside">
+        <i class="fa fa-hourglass"></i>
+        <p class="timeElapsedLbl">Time Elapsed</p>
+        <p class="timeElapsed">0 seconds</p>
+      </section>
       <ul class="deck">
         <li class="card">
           <i class="fa fa-diamond"></i>
@@ -91,11 +96,6 @@
           <i class="fa fa-cube"></i>
         </li>
       </ul>
-      <section class="aside">
-        <i class="fa fa-hourglass"></i>
-        <p class="timeElapsedLbl">Time Elapsed</p>
-        <p class="timeElapsed">0 seconds</p>
-      </section>
     </section>
   </div>
 
