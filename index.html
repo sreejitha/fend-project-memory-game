@@ -11,14 +11,12 @@
 </head>
 
 <body>
-  <div id="myModal" class="modal">
+  <div id="gameOverModal" class="modal">
     <div class="gameStats">
-      <span>
       <p class="modalTextpara para1-gameover">Congratulations! you won!</p>
       <p class="modalTextpara para2-gameover">With 17 moves and 1 stars</p>
       <p class="modalTextpara para2-gameover">Woooooooooohooooooooo!!</p>
       <input type="button" id="play-again" class="play-again" value="Play Again">
-    </span>
     </div>
   </div>
   <div class="container">
@@ -26,6 +24,7 @@
       <h1>Matching Game</h1>
     </header>
     <section class="score-panel">
+      <h4>GAME STATS</h4>
       <div class="starsAndMoves">
         <ul class="stars">
           <li><i class="fa fa-star"></i></li>
@@ -41,9 +40,9 @@
       </div>
     </section>
     <section class="main">
-      <section class="aside">
+      <section class="timer">
         <i class="fa fa-hourglass"></i>
-        <p class="timeElapsedLbl">Time Elapsed</p>
+        <h4 class="timeElapsedLbl">Time Elapsed</h4>
         <p class="timeElapsed">0 seconds</p>
       </section>
       <ul class="deck">

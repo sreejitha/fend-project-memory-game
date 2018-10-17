@@ -6,7 +6,8 @@ let timer;
 let seconds;
 let mins;
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/* Shuffle function from */
+/*https://stackoverflow.com/questions/7070054/javascript-shuffle-html-list-element-order */
 function shuffle() {
   var ul = document.querySelector(".deck");
   for (var i = ul.children.length; i >= 0; i--) {
@@ -57,7 +58,8 @@ function startTimer() {
       seconds = 0;
     }
     if(mins >= 1)
-    document.querySelector(".timeElapsed").textContent = `${mins} min ${seconds} sec`;
+    document.querySelector(".timeElapsed").textContent
+    = `${mins} min ${seconds} sec`;
     else {
       document.querySelector(".timeElapsed").textContent = `${seconds} sec`;
     }
@@ -66,10 +68,11 @@ function startTimer() {
 
 function displayGameOverModal() {
   console.log("in displayGameOverModal");
-  document.getElementById("myModal").style.display = "block";
+  document.getElementById("myModal").style.display = "table";
   let moves = document.getElementsByClassName("moves")[0].textContent;
   let noOfStars = document.getElementsByClassName("stars")[0].children.length;
-  document.getElementsByClassName("para2-gameover")[0].textContent = `With ${moves} moves and ${noOfStars} stars`;
+  document.getElementsByClassName("para2-gameover")[0].textContent
+   = `With ${moves} moves and ${noOfStars} stars`;
 }
 
 function checkForGameEnd() {
@@ -100,27 +103,32 @@ function incrementNoOfMoves() {
 /*Function to reduce number of stars based on increasing number or moves played.*/
 function manageStars(noOfMoves) {
   if (noOfMoves > 16 && noOfMoves <= 32) {
-    let fifthStar = document.getElementsByClassName('stars')[0].getElementsByTagName('li')[4];
+    let fifthStar = document.getElementsByClassName('stars')[0]
+    .getElementsByTagName('li')[4];
     if (fifthStar != null)
       fifthStar.remove();
   }
   if (noOfMoves > 32 && noOfMoves <= 48) {
-    let fourthStar = document.getElementsByClassName('stars')[0].getElementsByTagName('li')[3];
+    let fourthStar = document.getElementsByClassName('stars')[0]
+    .getElementsByTagName('li')[3];
     if (fourthStar != null)
       fourthStar.remove();
   }
   if (noOfMoves > 48 && noOfMoves <= 64) {
-    let thirdStar = document.getElementsByClassName('stars')[0].getElementsByTagName('li')[2];
+    let thirdStar = document.getElementsByClassName('stars')[0]
+    .getElementsByTagName('li')[2];
     if (thirdStar != null)
       thirdStar.remove();
   }
   if (noOfMoves > 64 && noOfMoves <= 80) {
-    let secondStar = document.getElementsByClassName('stars')[0].getElementsByTagName('li')[1];
+    let secondStar = document.getElementsByClassName('stars')[0]
+    .getElementsByTagName('li')[1];
     if (secondStar != null)
       secondStar.remove();
   }
   if (noOfMoves > 80) {
-    let firstStar = document.getElementsByClassName('stars')[0].getElementsByTagName('li')[0];
+    let firstStar = document.getElementsByClassName('stars')[0]
+    .getElementsByTagName('li')[0];
     if (firstStar != null)
       firstStar.remove();
   }
@@ -183,7 +191,7 @@ function restartGame() {
   /*Reset no of moves back to zero*/
   document.querySelector(".moves").textContent = "0";
   /*Reset time elapsed back to 0 seconds*/
-  document.querySelector(".timeElapsed").textContent = `0 min 0 sec`;
+  document.querySelector(".timeElapsed").textContent = `0 sec`;
   seconds = 0;
   mins = 0;
 }

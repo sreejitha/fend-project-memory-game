@@ -44,10 +44,11 @@ body {
 
 .gameStats {
   margin: auto;
-  display: table;
+  display: table-cell;
   padding: 20px;
   width: 80%;
   height: 100%;
+  vertical-align: middle;
   text-align: center;
 }
 
@@ -103,7 +104,7 @@ h1 {
   margin: auto;
 }
 
-.aside {
+.timer {
   display: inline-block;
   height: 200px;
   width: 100%;
@@ -116,14 +117,14 @@ h1 {
   margin: auto;
 }
 
-.aside i {
+.timer i {
   box-sizing: inherit;
   width: 80%;
   height: 10%;
   margin-top: 25px;
 }
 
-.aside p {
+.timer p {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -157,9 +158,10 @@ h1 {
   cursor: default;
 }
 
-.fa{
-  margin:auto;
+.fa {
+  margin: auto;
 }
+
 .deck .card.close {
   transform: rotateY(180deg);
   background: #2e3d49;
@@ -220,13 +222,19 @@ h1 {
  */
 
 .score-panel {
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   width: 70%;
   margin-bottom: 10px;
   margin-right: 10%;
   margin-left: 10%;
+}
+
+h4 {
+  margin: auto;
+  font-size: 20px;
+  font-weight: normal;
 }
 
 .score-panel .stars {
@@ -262,24 +270,26 @@ p.timeElapsed {
 }
 
 /*Adjust card size between these screen widths so 2 cards can fit each line*/
+
 @media screen and (min-width: 320px) and (max-width: 472px) {
   .deck .card {
-    width:70px;
-    height:70px;
+    width: 70px;
+    height: 70px;
   }
 }
 
 /*Adjust card size between these screen widths so 2 cards can fit each line */
+
 @media screen and (min-width: 473px) and (max-width: 480px) {
   .deck .card {
-    width:90px;
-    height:90px;
+    width: 90px;
+    height: 90px;
   }
 }
 
-
 /*Adjust card spacing between these screen widths so cards are not sticking to
  the edges of the screen */
+
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .deck {
     justify-content: center;
@@ -291,9 +301,10 @@ p.timeElapsed {
 
 /*Adjust card margins between these screen widths to avoid cards
 sticking together */
+
 @media screen and (min-width: 640px) and (max-width: 665px) {
-  .card{
-    margin:3%;
+  .card {
+    margin: 3%;
   }
   .deck {
     justify-content: space-around;
@@ -301,8 +312,9 @@ sticking together */
 }
 
 /*Adjust deck size from this screen width and above to optimize on space */
+
 @media screen and (min-width: 640px) and (max-width: 1348px) {
-  .main{
-    width:90%;
+  .main {
+    width: 90%;
   }
 }
