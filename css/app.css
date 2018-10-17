@@ -26,6 +26,10 @@ body {
   flex-direction: column;
 }
 
+/*
+ *Style for Game Over Modal and contents
+ */
+
 .modal {
   display: none;
   /* Hidden by default */
@@ -86,23 +90,8 @@ h1 {
 }
 
 /*
- * Styles for the deck of cards
+ * Styles for timer section
  */
-
-.deck {
-  width: 100%;
-  max-width: 600px;
-  min-height: 680px;
-  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-}
 
 .timer {
   display: inline-block;
@@ -127,6 +116,25 @@ h1 {
 .timer p {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+  width: 100%;
+  max-width: 600px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
 }
 
 .main {

@@ -9,28 +9,31 @@ let mins;
 /* Shuffle function from */
 /*https://stackoverflow.com/questions/7070054/javascript-shuffle-html-list-element-order */
 function shuffle() {
-  var ul = document.querySelector(".deck");
-  for (var i = ul.children.length; i >= 0; i--) {
+  let ul = document.querySelector('.deck');
+  for (let i = ul.children.length; i >= 0; i--) {
     ul.appendChild(ul.children[Math.random() * i | 0]);
   }
 }
 
+/*function to open card by adding appropriate classes to class list
+and adding card to myLastTwoCards*/
 function openCard(card) {
   myOpenedCards.push(card);
-  card.classList.add("open");
-  card.classList.add("show");
+  card.classList.add('open');
+  card.classList.add('show');
   myLastTwoCards.push(card);
   console.log(myLastTwoCards);
 }
 
+/*function to close card by removing appropriate classes from class list */
 function hideCard(cardArray) {
   for (let card of cardArray) {
-    console.log(card + " is going to be flipped");
+    console.log(card + ' is going to be flipped');
     setTimeout(function() {
-      card.classList.remove("open");
-      card.classList.remove("show");
-      card.classList.remove("match");
-      card.classList.remove("apply-shake");
+      card.classList.remove('open');
+      card.classList.remove('show');
+      card.classList.remove('match');
+      card.classList.remove('apply-shake');
     }, 500);
   }
 }
@@ -39,6 +42,9 @@ function deleteFromMyOpenedCards() {
   myOpenedCards = [];
 }
 
+function deleteFromMyLastTwoCards() {
+  myLastTwoCards = [];
+}
 function deleteSelectFromMyOpenedCards(cardArray) {
   for (let card of cardArray) {
     let indexOfCard = myOpenedCards.indexOf(card);
@@ -46,8 +52,9 @@ function deleteSelectFromMyOpenedCards(cardArray) {
   }
 }
 
+/*function to start and increment timer on the web-page at 1000ms interval*/
 function startTimer() {
-  console.log("timer started");
+  console.log('timer started');
   seconds = 0;
   mins = 0;
   timer = setInterval(function() {
@@ -58,26 +65,27 @@ function startTimer() {
       seconds = 0;
     }
     if(mins >= 1)
-    document.querySelector(".timeElapsed").textContent
+    document.querySelector('.timeElapsed').textContent
     = `${mins} min ${seconds} sec`;
     else {
-      document.querySelector(".timeElapsed").textContent = `${seconds} sec`;
+      document.querySelector('.timeElapsed').textContent = `${seconds} sec`;
     }
   }, 1000);
 }
 
+/*to display game over modal and associated game statistics*/
 function displayGameOverModal() {
-  console.log("in displayGameOverModal");
-  document.getElementById("myModal").style.display = "table";
-  let moves = document.getElementsByClassName("moves")[0].textContent;
-  let noOfStars = document.getElementsByClassName("stars")[0].children.length;
-  document.getElementsByClassName("para2-gameover")[0].textContent
+  document.getElementById('myModal').style.display = 'table';
+  let moves = document.getElementsByClassName('moves')[0].textContent;
+  let noOfStars = document.getElementsByClassName('stars')[0].children.length;
+  document.getElementsByClassName('para2-gameover')[0].textContent
    = `With ${moves} moves and ${noOfStars} stars`;
 }
 
+/*to check if game is over and take actions on game over*/
 function checkForGameEnd() {
-  console.log("Check For Game End event listener has fired");
   setInterval(function() {
+    /*condition for game over*/
     if (myOpenedCards.length === 16) {
       stopTimer();
       displayGameOverModal();
@@ -86,7 +94,7 @@ function checkForGameEnd() {
 }
 
 function stopTimer() {
-  console.log("stopping timer");
+  console.log('stopping timer');
   clearInterval(timer);
 }
 
@@ -94,10 +102,10 @@ function stopTimer() {
 Increments no of moves by 1 with each valid card click
 */
 function incrementNoOfMoves() {
-  let noOfMoves = parseInt(document.querySelector(".moves").textContent);
+  let noOfMoves = parseInt(document.querySelector('.moves').textContent);
   noOfMoves++;
   manageStars(noOfMoves);
-  document.querySelector(".moves").textContent = noOfMoves;
+  document.querySelector('.moves').textContent = noOfMoves;
 }
 
 /*Function to reduce number of stars based on increasing number or moves played.*/
@@ -140,17 +148,17 @@ If No-> Close them back
 */
 function checkMatch(cardArray) {
   if (cardArray.length == 2) {
-    var sameCardValue = true;
-    for (let myClass of cardArray[0].querySelector("i").classList) {
-      if (!cardArray[1].querySelector("i").classList.contains(myClass))
+    let sameCardValue = true;
+    for (let myClass of cardArray[0].querySelector('i').classList) {
+      if (!cardArray[1].querySelector('i').classList.contains(myClass))
         sameCardValue = false;
     }
 
     if (sameCardValue) { //Cards are a match in value, call shake event;
       for (let card of cardArray) {
         setTimeout(function() {
-          card.classList.add("apply-shake");
-          card.classList.add("match");
+          card.classList.add('apply-shake');
+          card.classList.add('match');
         }, 200);
       }
     } else {
@@ -165,33 +173,34 @@ function checkMatch(cardArray) {
 
 function resetStars() {
   /*Delete all stars currently present */
-  let starsList = document.getElementsByClassName("stars")[0];
+  let starsList = document.getElementsByClassName('stars')[0];
   while (starsList.firstChild) {
     starsList.removeChild(starsList.firstChild);
   }
   /*Add back exactly 5 stars*/
   for (let i = 1; i <= 5; i++) {
-    let li = document.createElement("li");
-    let i = document.createElement("i");
-    let ul = document.querySelector(".stars");
-    i.setAttribute("class", "fa fa-star");
+    let li = document.createElement('li');
+    let i = document.createElement('i');
+    let ul = document.querySelector('.stars');
+    i.setAttribute('class', 'fa fa-star');
     li.appendChild(i);
     ul.appendChild(li);
   }
 }
 
 function restartGame() {
-  console.log("restartGame got fired!");
+  console.log('restartGame got fired!');
   /*Set no of stars back to 5*/
   resetStars();
   /*Reshuffle cards and close all cards*/
   hideCard(myOpenedCards);
   deleteFromMyOpenedCards();
+  deleteFromMyLastTwoCards();
   setTimeout(shuffle, 500);
   /*Reset no of moves back to zero*/
-  document.querySelector(".moves").textContent = "0";
+  document.querySelector('.moves').textContent = '0';
   /*Reset time elapsed back to 0 seconds*/
-  document.querySelector(".timeElapsed").textContent = `0 sec`;
+  document.querySelector('.timeElapsed').textContent = `0 sec`;
   seconds = 0;
   mins = 0;
 }
@@ -210,14 +219,14 @@ for (cardElement of cardElements) {
   });
 }
 /*Event listener for starting Timer */
-document.querySelector(".deck").addEventListener("load", startTimer());
+document.querySelector('.deck').addEventListener('load', startTimer());
 /*Event listener for stopping Timer */
-document.querySelector(".deck").addEventListener("load", checkForGameEnd());
+document.querySelector('.deck').addEventListener('load', checkForGameEnd());
 /*Event listener for resetting game */
-document.querySelector(".restart").addEventListener('click', restartGame);
+document.querySelector('.restart').addEventListener('click', restartGame);
 /*Event listener for clicking 'Play Again' on Game Summary Modal */
-document.getElementById("play-again").addEventListener('click', function() {
-  document.getElementById("myModal").style.display = "none";
+document.getElementById('play-again').addEventListener('click', function() {
+  document.getElementById('myModal').style.display = 'none';
   restartGame();
   startTimer();
 });
