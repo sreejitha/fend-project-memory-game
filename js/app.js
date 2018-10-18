@@ -22,7 +22,7 @@ function openCard(card) {
   card.classList.add('open');
   card.classList.add('show');
   myLastTwoCards.push(card);
-  console.log(myLastTwoCards);
+  console.log("My last two cards:" + myLastTwoCards);
 }
 
 /*function to close card by removing appropriate classes from class list */
@@ -34,6 +34,7 @@ function hideCard(cardArray) {
       card.classList.remove('show');
       card.classList.remove('match');
       card.classList.remove('apply-shake');
+      card.removeAttribute('style');
     }, 500);
   }
 }
@@ -75,11 +76,12 @@ function startTimer() {
 
 /*to display game over modal and associated game statistics*/
 function displayGameOverModal() {
-  document.getElementById('myModal').style.display = 'table';
+  document.getElementById('gameOverModal').style.display = 'table';
   let moves = document.getElementsByClassName('moves')[0].textContent;
   let noOfStars = document.getElementsByClassName('stars')[0].children.length;
+  let timeTaken = document.querySelector('.timeElapsed').textContent;
   document.getElementsByClassName('para2-gameover')[0].textContent
-   = `With ${moves} moves and ${noOfStars} stars`;
+   = `With ${moves} moves, ${noOfStars} stars and in ${timeTaken}`;
 }
 
 /*to check if game is over and take actions on game over*/
@@ -156,10 +158,9 @@ function checkMatch(cardArray) {
 
     if (sameCardValue) { //Cards are a match in value, call shake event;
       for (let card of cardArray) {
-        setTimeout(function() {
+          card.style.pointerEvents = 'none';
           card.classList.add('apply-shake');
           card.classList.add('match');
-        }, 200);
       }
     } else {
       hideCard(cardArray);
@@ -226,7 +227,7 @@ document.querySelector('.deck').addEventListener('load', checkForGameEnd());
 document.querySelector('.restart').addEventListener('click', restartGame);
 /*Event listener for clicking 'Play Again' on Game Summary Modal */
 document.getElementById('play-again').addEventListener('click', function() {
-  document.getElementById('myModal').style.display = 'none';
+  document.getElementById('gameOverModal').style.display = 'none';
   restartGame();
   startTimer();
 });
