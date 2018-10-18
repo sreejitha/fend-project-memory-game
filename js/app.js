@@ -22,13 +22,11 @@ function openCard(card) {
   card.classList.add('open');
   card.classList.add('show');
   myLastTwoCards.push(card);
-  console.log("My last two cards:" + myLastTwoCards);
 }
 
 /*function to close card by removing appropriate classes from class list */
 function hideCard(cardArray) {
   for (let card of cardArray) {
-    console.log(card + ' is going to be flipped');
     setTimeout(function() {
       card.classList.remove('open');
       card.classList.remove('show');
@@ -55,7 +53,6 @@ function deleteSelectFromMyOpenedCards(cardArray) {
 
 /*function to start and increment timer on the web-page at 1000ms interval*/
 function startTimer() {
-  console.log('timer started');
   seconds = 0;
   mins = 0;
   timer = setInterval(function() {
@@ -96,7 +93,6 @@ function checkForGameEnd() {
 }
 
 function stopTimer() {
-  console.log('stopping timer');
   clearInterval(timer);
 }
 
@@ -190,7 +186,6 @@ function resetStars() {
 }
 
 function restartGame() {
-  console.log('restartGame got fired!');
   /*Set no of stars back to 5*/
   resetStars();
   /*Reshuffle cards and close all cards*/

@@ -127,18 +127,19 @@ h1 {
   max-width: 600px;
   min-height: 680px;
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-  padding: 32px;
+  padding: 25px;
   border-radius: 10px;
   box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: auto;
+  margin-left: auto;
+  margin-right: Auto;
 }
 
 .main {
-  width: 70%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -147,7 +148,7 @@ h1 {
   height: 125px;
   width: 125px;
   background: #2e3d49;
-  margin-bottom: 3%;
+  margin: 0.5%;
   font-size: 0;
   color: #ffffff;
   border-radius: 8px;
@@ -277,52 +278,74 @@ p.timeElapsed {
   font-size: 20px;
 }
 
-/*Adjust card size between these screen widths so 2 cards can fit each line*/
+/*Adjust card size between these screen widths so 4 cards can fit each line*/
 
-@media screen and (min-width: 320px) and (max-width: 472px) {
+@media screen and (min-width: 320px) and (max-width: 360px) {
+  .deck {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width: 380px) {
+  .deck {
+    padding: 15px;
+  }
+}
+
+@media screen and (min-width: 381px) and (max-width: 492px) {
+  .deck {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 381px) {
+  .deck {
+    min-height: 350px;
+  }
+  .deck .card {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (min-width: 382px) and (max-width:492px) {
+  .deck {
+    min-height: 400px;
+  }
+}
+
+@media screen and (min-width: 382px) and (max-width:424px) {
   .deck .card {
     width: 70px;
     height: 70px;
   }
 }
 
-/*Adjust card size between these screen widths so 2 cards can fit each line */
+@media screen and (min-width: 425px) and (max-width:492px) {
+  .deck .card {
+    width: 80px;
+    height: 80px;
+  }
+}
 
-@media screen and (min-width: 473px) and (max-width: 480px) {
+@media screen and (min-width: 493px) and (max-width:650px) {
+  .deck {
+    min-height: 550px;
+    padding: 25px;
+  }
+}
+
+@media screen and (min-width: 493px) and (max-width:555px) {
   .deck .card {
     width: 90px;
     height: 90px;
   }
 }
 
-/*Adjust card spacing between these screen widths so cards are not sticking to
- the edges of the screen */
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  .deck {
-    justify-content: center;
-  }
+@media screen and (min-width: 556px) and (max-width:650px) {
   .deck .card {
-    margin: 3%;
-  }
-}
-
-/*Adjust card margins between these screen widths to avoid cards
-sticking together */
-
-@media screen and (min-width: 640px) and (max-width: 665px) {
-  .card {
-    margin: 3%;
-  }
-  .deck {
-    justify-content: space-around;
-  }
-}
-
-/*Adjust deck size from this screen width and above to optimize on space */
-
-@media screen and (min-width: 640px) and (max-width: 1348px) {
-  .main {
-    width: 90%;
+    width: 100px;
+    height: 100px;
+    margin: 1%;
   }
 }
