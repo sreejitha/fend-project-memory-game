@@ -19,6 +19,9 @@ function shuffle() {
   }
 }
 
+/*
+  function to dynamically add cards to deck on page load
+*/
 function addCardsDeck() {
   for (let i = 0; i < imageclasses.length; i++) {
     let li = document.createElement('li');
@@ -31,12 +34,15 @@ function addCardsDeck() {
     ul.appendChild(li);
   }
 }
-/*function to open card by adding appropriate classes to class list
-and adding card to myLastTwoCards*/
+/*function to open card by adding
+  appropriate classes to class list
+  and adding card to myLastTwoCards
+*/
 function openCard(card) {
   myOpenedCards.push(card);
   card.classList.add('open');
   card.classList.add('show');
+  card.style.pointerEvents = 'none';
   myLastTwoCards.push(card);
 }
 
@@ -112,7 +118,7 @@ function stopTimer() {
 }
 
 /*
-Increments no of moves by 1 with each valid card click
+  Increments no of moves by 1 with each valid card click
 */
 function incrementNoOfMoves() {
   let noOfMoves = parseInt(document.querySelector('.moves').textContent);
@@ -121,7 +127,9 @@ function incrementNoOfMoves() {
   document.querySelector('.moves').textContent = noOfMoves;
 }
 
-/*Function to reduce number of stars based on increasing number or moves played.*/
+/*function to reduce number of stars based on increasing number or
+  moves played.
+*/
 function manageStars(noOfMoves) {
   if (noOfMoves > 16 && noOfMoves <= 32) {
     let fifthStar = document.getElementsByClassName('stars')[0]
@@ -156,8 +164,8 @@ function manageStars(noOfMoves) {
 }
 
 /*Checks if the last 2 opened cards are a match
-If Yes-> Animation for matching cards + leave them open
-If No-> Close them back
+  If Yes-> Animation for matching cards + leave them open
+  If No-> Close them back
 */
 function checkMatch(cardArray) {
   if (cardArray.length == 2) {
@@ -197,11 +205,15 @@ function resetStars() {
     i.setAttribute('class', 'fa fa-star');
     li.appendChild(i);
     ul.appendChild(li);
-    n
   }
 }
 
+/*
+  function to restart game following several steps
+  a> reset stars b>hide cards c>restart timer d>reset no of moves
+*/
 function restartGame() {
+  console.log('trying to restart game');
   /*Set no of stars back to 5*/
   resetStars();
   /*Reshuffle cards and close all cards*/
